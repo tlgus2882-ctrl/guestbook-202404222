@@ -9,6 +9,8 @@ export type CreateFormState = {
   status: "idle" | "ok" | "invalid";
   errors: FieldErrors;
   values: { name: string; message: string };
+  // 작성 성공 시각. 성공할 때마다 편지 애니메이션을 새로 재생하는 key로 쓴다.
+  sentAt?: number;
 };
 
 function text(formData: FormData, key: string): string {
@@ -24,7 +26,7 @@ export async function createEntryAction(_prev: CreateFormState, formData: FormDa
     return { status: "invalid", errors: result.errors, values: { name: input.name, message: input.message } };
   }
   revalidatePath("/");
-  return { status: "ok", errors: {}, values: { name: "", message: "" } };
+  return { status: "ok", errors: {}, values: { name: "", message: "" }, sentAt: Date.now() };
 }
 
 // 수정·삭제는 폼이 아니라 목록 안의 인라인 입력칸에서 직접 호출한다.

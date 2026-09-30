@@ -51,7 +51,7 @@ export function EntryList({ entries }: { entries: Entry[] }) {
                   <span className="text-xs text-zinc-400">(수정됨 · {formatKst(entry.updatedAt)})</span>
                 )}
                 <span className="ml-auto flex gap-2 text-sm">
-                  <button type="button" onClick={() => open({ id: entry.id, mode: "edit" })} className="text-zinc-500 hover:text-indigo-600">
+                  <button type="button" onClick={() => open({ id: entry.id, mode: "edit" })} className="text-zinc-500 hover:text-rose-600">
                     수정
                   </button>
                   <button type="button" onClick={() => open({ id: entry.id, mode: "delete" })} className="text-zinc-500 hover:text-red-600">
@@ -182,7 +182,7 @@ function PanelButtons({
         type="submit"
         disabled={pending}
         className={`rounded-md px-3 py-1.5 text-sm font-semibold text-white disabled:opacity-50 ${
-          danger ? "bg-red-600 hover:bg-red-700" : "bg-indigo-600 hover:bg-indigo-700"
+          danger ? "bg-red-600 hover:bg-red-700" : "bg-rose-600 hover:bg-rose-700"
         }`}
       >
         {pending ? "처리 중…" : submitLabel}

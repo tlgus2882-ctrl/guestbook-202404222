@@ -19,6 +19,51 @@
   }
 }
 
+/* 방명록 글을 남기면 날개 달린 편지가 날아간다 */
+@keyframes letter-fly {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.5) rotate(0deg);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(-10px, -24px) scale(1) rotate(-6deg);
+  }
+  45% {
+    transform: translate(-70px, -150px) scale(1) rotate(8deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(60px, -380px) scale(0.7) rotate(-14deg);
+  }
+}
+
+@keyframes wing-flap {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(-0.5);
+  }
+}
+
+.letter-fly {
+  animation: letter-fly 1.6s cubic-bezier(0.4, 0, 0.3, 1) forwards;
+}
+
+.wing {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: wing-flap 0.18s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter-fly {
+    display: none;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
